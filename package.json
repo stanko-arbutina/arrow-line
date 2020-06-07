@@ -1,0 +1,45 @@
+{
+  "name": "arrow-line",
+  "version": "0.7.0",
+  "description": "",
+  "browser": "dist/arrow-line.min.js",
+  "module": "dist/arrow-line.min.js",
+  "scripts": {
+    "build": "npx webpack --config webpack.prod.js",
+    "watch": "npx webpack --watch --config webpack.dev.js",
+    "start": "npx webpack-dev-server --open --config webpack.dev.js",
+    "karma": "npx karma start"
+  },
+  "keywords": [
+    "arrow",
+    "bezier",
+    "curve",
+    "pointer",
+    "line",
+    "svg",
+    "path",
+    "diagram",
+    "graph",
+    "vector"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "Stanko Arbutina <stanko.arbutina@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-webpack-plugin": "^0.1.0",
+    "jasmine-core": "^3.5.0",
+    "karma": "^5.0.2",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-jasmine": "^3.1.1",
+    "karma-spec-reporter": "0.0.32",
+    "karma-webpack": "^4.0.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "3.11.0",
+    "webpack-merge": "4.2.2"
+  },
+  "dependencies": {}
+}

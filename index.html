@@ -1,0 +1,99 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Testing arrow lines</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container" id="mainContainer">
+    <svg id='existingTestSvgCanvas'>
+        <defs>
+            <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5"
+                    markerWidth="5" markerHeight="5">
+                <circle cx="5" cy="5" r="5" fill="green" />
+            </marker>
+        </defs>
+    </svg>
+</div>
+<button id="clickMe">Click me!</button>
+
+<script src="setup_markup.js"></script>
+<script src="dist/arrow-line.js"></script>
+<script>
+    const curvature = 1.5;
+    const style = 'dot-dash';
+    const color = 'orange';
+    const fillColor = 'white';
+    const thickness = 3;
+
+
+    const aL1 = arrowLine('#item0', '#item6', {
+      color,
+      style: style,
+      curvature,
+      thickness,
+      forceDirection: 'vertical',
+      endpoint: {
+        type: 'circles'
+      }
+    });
+
+    document.getElementById('clickMe').addEventListener('click', function(){
+      aL1.remove();
+      al2.update({color: 'blue', sourcePosition: 'topLeft', endpoint: {type: 'arrowHeadFilled'} });
+      document.addEventListener('mousemove', function(event){
+        al2.update({destination: {x: event.pageX, y: event.pageY}});
+      })
+
+    });
+
+    const al2 = arrowLine('#item3', '#item13', {
+      color,
+      style: style,
+      curvature,
+      thickness,
+      endpoint: {
+        type: 'none',
+        fillColor: fillColor,
+        size: 1.2,
+        position: 'both'
+      }
+    });
+
+    arrowLine('#item4', '#item9', {
+      color,
+      style: style,
+      curvature,
+      thickness,
+      endpoint: {
+        type: 'squares',
+        fillColor: fillColor,
+        size: 0.3
+      }
+    });
+
+    arrowLine({x:100, y:100}, {x: 50, y: 50}, {
+      pivots: [{x: -50,y: -100}, {x: 50, y: 200}],
+      color: 'red',
+      style: style,
+      thickness,
+      endpoint: {
+        type: 'custom',
+//        fillColor: fillColor,
+        markerIdentifier: 'dot'
+      },
+      svgParentSelector: '#existingTestSvgCanvas'
+    });
+//    arrowLine('#item1', '#item5', 'purple', curvature);
+//    arrowLine('#item6', '#item2', 'violet', curvature);
+//    arrowLine('#item10', '#item3', 'green', curvature);
+//    arrowLine('#item10', '#item1', 'pink', curvature);
+//    arrowLine('#item11', '#item3', 'black', curvature);
+//    arrowLine('#item14', '#item3', 'brown', curvature);
+</script>
+</body>
+</html>
