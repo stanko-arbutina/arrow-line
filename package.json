@@ -1,6 +1,6 @@
 {
   "name": "arrow-line",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "",
   "browser": "dist/arrow-line.min.js",
   "module": "dist/arrow-line.min.js",

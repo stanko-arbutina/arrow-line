@@ -33,7 +33,7 @@ The library can be added directly to the page with a script tag:
 
     <script src="arrow-line.min.js"></script>    
 
-which exposes it as a global variable (`arrowLine`), or it can be used as UMD an (CommonJS/AMD/ES6) module.
+which exposes it as a global variable (`arrowLine`), or it can be used as UMD (CommonJS/AMD/ES6) module.
 
 ### API
 
@@ -65,7 +65,7 @@ for example:
 `arrowLine` function returns an object (`arrow` in the examples) with two methods:
 
 + `arrow.remove()` - deletes an arrow from the screen.
-+ `arrow.update([options])` - updates the original arrow options. `[options]` object is the same type as the one provided to the constructor except for the `svgParentSelector` (see below) option which is not allowed in this context. Some examples:
++ `arrow.update([options])` - updates the original arrow options. `[options]` object is of the same type as the one provided to the constructor except for the `svgParentSelector` (see below) option which is not allowed in this context. Some examples:
 
         arrow.update({source: {x: 10, y: 8} });
         arrow.update({color: 'blue', style: 'dot'});
@@ -76,17 +76,19 @@ for example:
     
 #### Options
 
-+ `source` - css (query) selector string of the element from which the arrow starts. Alternatively, an object containing coordinates `{x:.. ,y: ...}` is accepted. Note that this is available in constructor only when having `options` object as a first (and only) argument
-+ `destination` - css (query) selector string of the element at which the arrow ends. Alternatively, an object containing coordinates `{x:.. ,y: ...}` is accepted. Note that this is available in constructor only when having `options` object as a first (and only) argument
-+ `sourcePosition` - one of _topLeft_, _topRight_, _topCenter_, _middleRight_, _middleLeft_, _bottomLeft_, _bottomCenter_  and _bottomRight_. Specifies the part of the source element at which the arrow starts. When not specified, center of one side (depending on the position in relation to destination) of the source rectangle is selected. Only used when having a css selector as a source.
++ `source` - css (query) selector string of the element from which the arrow starts. Alternatively, an object containing coordinates `{x:.. ,y: ...}` is accepted. 
+This option is only available if source element is not already provided as the first argument (that is, _options_ object is the only argument to constructor).
++ `destination` - css (query) selector string of the element at which the arrow ends. Alternatively, an object containing coordinates `{x:.. ,y: ...}` is accepted. 
+This option is only available if destination element is not already provided as the second argument (that is, _options_ object is the only argument to constructor).
++ `sourcePosition` - one of _topLeft_, _topRight_, _topCenter_, _middleRight_, _middleLeft_, _bottomLeft_, _bottomCenter_  and _bottomRight_. Specifies the part of the source element on which the arrow starts. When not specified, center of one side (depending on the position in relation to destination) of the source rectangle is selected. Only used when having a css selector as a source.
 + `destinationPosition` - one of _topLeft_, _topRight_, _topCenter_, _middleRight_, _middleLeft_, _bottomLeft_, _bottomCenter_  and _bottomRight_. Specifies the part of the destination element at which the arrow ends. When not specified, center of one side (depending on the position in relation to source) of the destination rectangle is selected. Only used when having a css selector as a destination.
-+ `color` - string representing color of the arrow. Valid values include _blue_, _#00F_ and _rgb(0,0,255)_ - [similar](https://css-tricks.com/almanac/properties/s/stroke/) to representing the color in css. Default is _black_.  
++ `color` - string representing the color of the arrow. Valid values include _blue_, _#00F_ and _rgb(0,0,255)_ - [similar](https://css-tricks.com/almanac/properties/s/stroke/#values) to representing the color in css. Default is _black_.  
 + `curvature` - non-zero number representing how curved should the arrow be. Default is 1. 
 + `pivots` - a pair of coordinates `[{x:..., y: ...}, {x:..., y: ...}]` containing the pivots of the arrow (relative to start point and end point). Arrow is drawn as a [Cubic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B%C3%A9zier_curves) - it's pivots are normally calculated automatically based on `curvature` and direction of the arrow.
 + `style` - can be one of _dot_, _dash_, _solid_ and _dot-dash_. Line style of the arrow. Default is _solid_.
 + `thickness` - number representing the thickness of the arrow. Default is 1.
 + `forceDirection` - can be _horizontal_ or _vertical_. By default, weather the arrow is oriented along horizontal or vertical axis is decided based on source and destination position.
-+ `svgParentSelector` - string, containing the css/query selector of an `<svg>` element on which to draw arrows. If this option is not specified, an `<svg>` element is created in top left corner of the page the first time `arrowLine` is called, and reused after that. 
++ `svgParentSelector` - string, containing the css/query selector of an `<svg>` element on which to draw arrows. If this option is not specified, an `<svg>` element is created in the top left corner of the page the first time `arrowLine` is called, and reused after that. 
 + `endpoint` - an object, containing options for drawing the arrow endpoint. Can be one of:    
     + `type` - shape of the endpoint. Can be one of _arrowHeadFilled_, _arrowHead_, _squares_, _circles_, _custom_, and _none_. If _custom_ is specified, `markerIdentifier` (see below) is required. Default is _arrowHeadFilled_. 
     + `markerIdentifier` - css (query) selector of a [marker svg element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/marker) to be used as endpoint. Only allowed with _custom_ endpoint `type`.
@@ -105,7 +107,7 @@ For ease of local development, there is a very minimal web page (`index.html`) i
 
 `dist` folder is included in the repo for user convenience. Similarily, a small chunk of [lodash](https://lodash.com/) is bundled-in directly. 
 
-The project in its current iteration covers my use-case adequately. If it were to be developed further, the first major milestone would be to add some kind of framework for testing for visual regressions.
+The project in its current iteration covers my use-case adequately. If it were to be developed further, the first major milestone would be to add some kind of framework for detecting visual regressions.
 
 ## License
 
