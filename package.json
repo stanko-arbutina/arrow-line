@@ -1,6 +1,6 @@
 {
   "name": "arrow-line",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "",
   "browser": "dist/arrow-line.min.js",
   "module": "dist/arrow-line.min.js",
@@ -27,6 +27,14 @@
   ],
   "author": "Stanko Arbutina <stanko.arbutina@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stanko-arbutina/arrow-line.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stanko-arbutina/arrow-line/issues"
+  },
+  "homepage": "https://github.com/stanko-arbutina/arrow-line",
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-webpack-plugin": "^0.1.0",

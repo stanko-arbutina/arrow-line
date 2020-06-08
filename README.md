@@ -1,19 +1,61 @@
 # arrow-line
+![GitHub package.json version](https://img.shields.io/github/package-json/v/stanko-arbutina/arrow-line?style=plastic)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/arrow-line?style=plastic)
+![NPM](https://img.shields.io/npm/l/arrow-line?style=plastic)
 
 Draw arrows between html elements in browser using SVG. Based on [this article](https://www.beyondjava.net/how-to-connect-html-elements-with-an-arrow-using-svg). 
+Available via CDN: https://cdn.jsdelivr.net/npm/arrow-line/dist/arrow-line.min.js
 
-![Example](./example-screenshot.png)
+\
+![Example](https://raw.githubusercontent.com/stanko-arbutina/arrow-line/master/example-screenshot.png)
+
+
+
+## Quick start
+
+__With npm/webpack:__
+
+    npm install arrow-line # in terminal
+
+
+```javascript
+import * as arrowLine from 'arrow-line'; // to import, or
+const arrowLine = require('arrow-line'); // if using commonjs
+```
+
+__Or, add directly with \<script> tag:__
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/arrow-line/dist/arrow-line.min.js">
+```    
+
+__Connect elements:__
+
+```javascript
+const arrow = arrowLine('#firstId', '#secondId');
+```
+___
+
++ [Introduction](https://github.com/stanko-arbutina/arrow-line/#introduction)
++ [Installation](https://github.com/stanko-arbutina/arrow-line/#installation)
++ [Usage](https://github.com/stanko-arbutina/arrow-line/#usage)
+    + [Construction](https://github.com/stanko-arbutina/arrow-line/#construction)
+    + [Methods](https://github.com/stanko-arbutina/arrow-line/#methods)
+    + [Options](https://github.com/stanko-arbutina/arrow-line/#options)
++ [Development notes](https://github.com/stanko-arbutina/arrow-line/#development-notes)
++ [Similar projects](https://github.com/stanko-arbutina/arrow-line/#similar-projects)
++ [License](https://github.com/stanko-arbutina/arrow-line/#license)
+
 
 ## Introduction
 
 Recently I was doing an interactive presentation for which I wanted to draw diagram-like arrows 
-between cells of a html table. To my suprise, I couldn't find a ready 
-solution -  [react archer](https://github.com/pierpo/react-archer) seems like a good 
-fit, but my project was not using React. I've found an article from an author who had similar problem
+between cells of a html table.  I've found an article from an author who had similar problem
 and [summarized](https://www.beyondjava.net/how-to-connect-html-elements-with-an-arrow-using-svg) a 
 solution nicely -  this is my effort to extract it in a library.
 
 Basically, we create an SVG element in the top left corner of the page, and try to find the coordinates of the elements we wish to connect (relative to the origin of svg coordinate system). We then draw a bezier curve between the points (and use a _marker_ for arrowhead).
+
 ## Installation
 
 _Using npm:_ 
@@ -31,50 +73,57 @@ _or simply download `dist/arrow-line.min.js` and include it in your page._
 
 The library can be added directly to the page with a script tag:
 
-    <script src="arrow-line.min.js"></script>    
-
+```html
+<script src="arrow-line.min.js"></script>    
+```
 which exposes it as a global variable (`arrowLine`), or it can be used as UMD (CommonJS/AMD/ES6) module.
 
-### API
-
-#### Construction
+### Construction
 
 Draw an arrow with:
 
-    arrowLine(<source>, <destination>, [options object]);
+```
+arrowLine(<source>, <destination>, [options object]);
+```
 
 or, alternatively:    
-    
-    arrowLine({
-        source: <source>,
-        destination: <destination>,
-        ...[other options]
-    });
+
+```    
+arrowLine({
+    source: <source>,
+    destination: <destination>,
+    ...[other options]
+});
+```
  
 
 for example:
-    
-    const arrow = arrowLine('#box1', '#box2', { color: 'blue' });
-    const arrow = arrowLine({source: '#box1', destination: '#box2', thickness: 3, style: 'dot'});
-    const arrow = arrowLine({x: 5, y: 10}, {x: 100, y: 80}, {curvature: 1.5, endpoint: {type: 'squares' }});
+
+```javascript    
+const arrow = arrowLine('#box1', '#box2', { color: 'blue' });
+const arrow = arrowLine({source: '#box1', destination: '#box2', thickness: 3, style: 'dot'});
+const arrow = arrowLine({x: 5, y: 10}, {x: 100, y: 80}, {curvature: 1.5, endpoint: {type: 'squares' }});
+```
 
 `<source>` and `<destination>` are either [css/query selector strings](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) or objects `{x: .., y:..}` containing pairs of coordinates. Resulting arrow begins at `<source>` and ends at `<destination>`. You can provide further options (described below) to customize the arrow.
 
-#### Methods
+### Methods
 
 `arrowLine` function returns an object (`arrow` in the examples) with two methods:
 
 + `arrow.remove()` - deletes an arrow from the screen.
 + `arrow.update([options])` - updates the original arrow options. `[options]` object is of the same type as the one provided to the constructor except for the `svgParentSelector` (see below) option which is not allowed in this context. Some examples:
 
-        arrow.update({source: {x: 10, y: 8} });
-        arrow.update({color: 'blue', style: 'dot'});
+```javascript    
+    arrow.update({source: {x: 10, y: 8} });
+    arrow.update({color: 'blue', style: 'dot'});
+```
 
 + `arrow.getParentSvgId()` - returns an id of SVG element containing the arrow (if it has one)
 + `arrow.getRawSvgPath()` - returns the actual SVG [`<path>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path) element (`arrow` is essentially just a wrapper around this element)   
     
     
-#### Options
+### Options
 
 + `source` - css (query) selector string of the element from which the arrow starts. Alternatively, an object containing coordinates `{x:.. ,y: ...}` is accepted. 
 This option is only available if source element is not already provided as the first argument (that is, _options_ object is the only argument to constructor).
@@ -108,6 +157,12 @@ For ease of local development, there is a very minimal web page (`index.html`) i
 `dist` folder is included in the repo for user convenience. Similarily, a small chunk of [lodash](https://lodash.com/) is bundled-in directly. 
 
 The project in its current iteration covers my use-case adequately. If it were to be developed further, the first major milestone would be to add some kind of framework for detecting visual regressions.
+
+## Similar projects
+
+- [LeaderLine](https://anseki.github.io/leader-line/) - like arrow-line, but much more powerful
+- [Curved line arrow angular](https://github.com/MelekDamak/curved-line-arrow-angular) - angular directive for drawing arrows. Uses HTML Canvas
+- [react-arrow](https://github.com/jcoreio/react-arrow) and [react-archer](https://github.com/pierpo/react-archer) - react components
 
 ## License
 
