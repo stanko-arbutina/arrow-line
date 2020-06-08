@@ -4,26 +4,26 @@
 ![NPM](https://img.shields.io/npm/l/arrow-line?style=plastic)
 
 Draw arrows between html elements in browser using SVG. Based on [this article](https://www.beyondjava.net/how-to-connect-html-elements-with-an-arrow-using-svg). 
-Available via CDN: https://cdn.jsdelivr.net/npm/arrow-line/dist/arrow-line.min.js
+
+Get it from CDN: https://cdn.jsdelivr.net/npm/arrow-line/dist/arrow-line.min.js
 
 \
 ![Example](https://raw.githubusercontent.com/stanko-arbutina/arrow-line/master/example-screenshot.png)
-
-
 
 ## Quick start
 
 __With npm/webpack:__
 
-    npm install arrow-line # in terminal
-
+```bash
+npm install arrow-line # in terminal
+```
 
 ```javascript
 import * as arrowLine from 'arrow-line'; // to import, or
 const arrowLine = require('arrow-line'); // if using commonjs
 ```
 
-__Or, add directly with \<script> tag:__
+__Or, add directly via \<script> tag:__
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/arrow-line/dist/arrow-line.min.js">
@@ -36,15 +36,15 @@ const arrow = arrowLine('#firstId', '#secondId');
 ```
 ___
 
-+ [Introduction](https://github.com/stanko-arbutina/arrow-line/#introduction)
-+ [Installation](https://github.com/stanko-arbutina/arrow-line/#installation)
-+ [Usage](https://github.com/stanko-arbutina/arrow-line/#usage)
-    + [Construction](https://github.com/stanko-arbutina/arrow-line/#construction)
-    + [Methods](https://github.com/stanko-arbutina/arrow-line/#methods)
-    + [Options](https://github.com/stanko-arbutina/arrow-line/#options)
-+ [Development notes](https://github.com/stanko-arbutina/arrow-line/#development-notes)
-+ [Similar projects](https://github.com/stanko-arbutina/arrow-line/#similar-projects)
-+ [License](https://github.com/stanko-arbutina/arrow-line/#license)
++ [Introduction](#introduction)
++ [Installation](#installation)
++ [Usage](#usage)
+    + [Construction](#construction)
+    + [Methods](#methods)
+    + [Options](#options)
++ [Development notes](#development-notes)
++ [Similar projects](#similar-projects)
++ [License](#license)
 
 
 ## Introduction
@@ -59,13 +59,17 @@ Basically, we create an SVG element in the top left corner of the page, and try 
 ## Installation
 
 _Using npm:_ 
-        
-    npm install arrow-line 
+
+```bash        
+npm install arrow-line 
+```
 
 _Using yarn:_ 
 
-    yarn add arrow-line
-    
+```bash        
+yarn add arrow-line
+```
+
 _or simply download `dist/arrow-line.min.js` and include it in your page._
 
 
