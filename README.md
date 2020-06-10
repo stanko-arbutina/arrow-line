@@ -166,7 +166,7 @@ The project in its current iteration covers my use-case adequately. If it were t
 
 - [LeaderLine](https://anseki.github.io/leader-line/) - like arrow-line, but much more powerful
 - [Curved line arrow angular](https://github.com/MelekDamak/curved-line-arrow-angular) - angular directive for drawing arrows. Uses HTML Canvas
-- [react-arrow](https://github.com/jcoreio/react-arrow) and [react-archer](https://github.com/pierpo/react-archer) - react components
+- [react-arrow](https://github.com/jcoreio/react-arrow), [react-archer](https://github.com/pierpo/react-archer) and [react-xarrows](https://github.com/Eliav2/react-xarrows) - react components
 
 ## License
 

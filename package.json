@@ -1,7 +1,7 @@
 {
   "name": "arrow-line",
-  "version": "0.7.3",
-  "description": "",
+  "version": "0.7.4",
+  "description": "Draw arrows between HTML elements",
   "browser": "dist/arrow-line.min.js",
   "module": "dist/arrow-line.min.js",
   "scripts": {
