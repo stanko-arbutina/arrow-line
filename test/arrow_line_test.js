@@ -68,7 +68,7 @@ describe('arrowLine', () => {
     });
   });
 
-  fdescribe('#getRawSvgPath', () => {
+  describe('#getRawSvgPath', () => {
     it('Returns a raw svg path element', () => {
       const newArrow = arrowLine('#existingStart', '#existingEnd');
       const path = newArrow.getRawSvgPath();

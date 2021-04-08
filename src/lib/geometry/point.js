@@ -1,3 +1,4 @@
+const isUndefined = require('lodash/isUndefined');
 class Point {
   constructor(x,y){
     this.x = x;
@@ -6,12 +7,13 @@ class Point {
 
   translate(first, second){
     let x,y;
-    if (first && !second && (first.x || first.y)) {
+    if (first && isUndefined(second)) {
       [x,y] = [first.x, first.y];
     } else {
       [x,y] = [first, second];
     }
-    return new Point(this.x+(x || 0), this.y + (y || 0));
+    const result = new Point(this.x+(x || 0), this.y + (y || 0));
+    return result;
   }
 
   leftOf(other) {
