@@ -53,8 +53,7 @@ describe('Parsing arguments', () =>{
   describe('curvature', () => {
     expectItWorks(sampleParams({ curvature: 1.2}));
     expectItWorks(sampleParams({ curvature: -5}));
-    expectArgumentError(sampleParams({ curvature: 'bla'}), 'must be a number different than 0');
-    expectArgumentError(sampleParams({ curvature: 0}), 'must be a number different than 0');
+    expectArgumentError(sampleParams({ curvature: 'bla'}), 'must be a number');
   });
 
   describe('pivots', () => {

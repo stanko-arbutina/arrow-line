@@ -11,10 +11,16 @@ function getPivots(point1, point2, curvature, direction) {
 }
 
 function pathDefinition(point1, point2, options){
-  const [p1, p2] = options.curvature ?
-    getPivots(point1, point2, options.curvature, options.direction) :
-    [point1.translate(options.pivots[0]), point2.translate(options.pivots[1])];
-  return ['M', point1.str(), 'C', p1.str(), p2.str(), point2.str()].join(' ');
+  const pathElements = ['M', point1.str()];
+  if (options.curvature !=0) {
+    const pivots = options.curvature ?
+        getPivots(point1, point2, options.curvature, options.direction) :
+        [point1.translate(options.pivots[0]), point2.translate(options.pivots[1])];
+    pathElements.push('C');
+    pathElements.push(...pivots.map(p => p.str()));
+  }
+  pathElements.push(point2.str());
+  return pathElements.join(' ');
 }
 
 module.exports = pathDefinition;

@@ -4,11 +4,11 @@ const Errors = require('../../util/errors');
 
 function validateCurvature(options){
   if (!isUndefined(options.curvature)) {
-    if (!isNumber(options.curvature) || (options.curvature == 0)) {
-      Errors.mustBeNonZeroNumber('Curvature')
+    if (!isNumber(options.curvature)) {
+      Errors.mustBeNumber('Curvature')
     }
   }
-  if (!options.pivots) options.curvature = options.curvature || 1;
+  if (!options.pivots && isUndefined(options.curvature)) options.curvature = 1;
 }
 
 module.exports = validateCurvature;
