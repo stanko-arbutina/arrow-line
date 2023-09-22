@@ -142,6 +142,7 @@ This option is only available if destination element is not already provided as 
 + `thickness` - number representing the thickness of the arrow. Default is 1.
 + `forceDirection` - can be _horizontal_ or _vertical_. By default, weather the arrow is oriented along horizontal or vertical axis is decided based on source and destination position.
 + `svgParentSelector` - string, containing the css/query selector of an `<svg>` element on which to draw arrows. If this option is not specified, an `<svg>` element is created in the top left corner of the page the first time `arrowLine` is called, and reused after that. 
++ `context` - shadow root, if specified, this becomes the root element where the elements to be joined starts looking from.  For use with webcomponents, where elements in a shadow dom are not visible to the main document.  Defaults to the main document object.
 + `endpoint` - an object, containing options for drawing the arrow endpoint. Can be one of:    
     + `type` - shape of the endpoint. Can be one of _arrowHeadFilled_, _arrowHead_, _squares_, _circles_, _custom_, and _none_. If _custom_ is specified, `markerIdentifier` (see below) is required. Default is _arrowHeadFilled_. 
     + `markerIdentifier` - css (query) selector of a [marker svg element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/marker) to be used as endpoint. Only allowed with _custom_ endpoint `type`.
