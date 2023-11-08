@@ -3,18 +3,20 @@ const Errors = require('./util/errors');
 
 const cache = new Map();
 
-function getSvgCanvas(selector){
+function getSvgCanvas(selector, options){
   let domElement;
+  
   if (!selector){
     domElement = SvgCanvas.defaultSvgElement();
   } else {
-    if (!cache.has(selector)) {
-      const el = document.querySelector(selector);
+    //if (!cache.has(selector)) {
+      const rootElement = options.context || document;
+      const el = rootElement.querySelector(selector);
       if (!el) {
         Errors.couldNotFindSelector(selector);
       }
       cache.set(selector, el);
-    }
+    //}
     domElement =  cache.get(selector)
   }
   return new SvgCanvas(domElement);

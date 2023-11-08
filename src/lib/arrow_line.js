@@ -46,7 +46,7 @@ function arrowLine(...args) {
     const parsedArguments = parseArguments(args);
     const options = parsedArguments.options;
     let rawOptions = parsedArguments.rawOptions;
-    const svg = getCanvas(options.svgParentSelector);
+    const svg = getCanvas(options.svgParentSelector, options);
     const svgPath = svg.createPath();
     setPathAttributes(svgPath, getPathAttributes(svg, options));
     return {
