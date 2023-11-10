@@ -12,7 +12,8 @@ const SUPPORTED_OPTIONS = [
   'thickness',
   'forceDirection',
   'endpoint',
-  'svgParentSelector'
+  'svgParentSelector',
+  `context`
 ];
 
 

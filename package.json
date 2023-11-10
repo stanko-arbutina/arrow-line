@@ -1,11 +1,11 @@
 {
-  "name": "arrow-line",
-  "version": "0.7.5",
+  "name": "arrow-line-webcomponents",
+  "version": "0.1.1",
   "description": "Draw arrows between HTML elements",
   "browser": "dist/arrow-line.min.js",
   "module": "dist/arrow-line.min.js",
   "scripts": {
-    "build": "npx webpack --config webpack.prod.js",
+    "build": "npx webpack --config webpack.dev.js && npx webpack --config webpack.prod.js",
     "watch": "npx webpack --watch --config webpack.dev.js",
     "start": "npx webpack-dev-server --open --config webpack.dev.js",
     "karma": "npx karma start"
@@ -20,21 +20,31 @@
     "path",
     "diagram",
     "graph",
-    "vector"
+    "vector",
+    "webcomponents"
   ],
   "files": [
     "dist"
   ],
-  "author": "Stanko Arbutina <stanko.arbutina@gmail.com>",
+  "contributors" : [
+    {
+      "name" : "Stanko Arbutina",
+      "email" : "stanko.arbutina@gmail.com"
+    },  
+    {
+      "name" : "Peter Chavasse",
+      "email" : "peter.chavasse.1970@gmail.com"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stanko-arbutina/arrow-line.git"
+    "url": "https://github.com/peterchavasse/arrow-line.git"
   },
   "bugs": {
-    "url": "https://github.com/stanko-arbutina/arrow-line/issues"
+    "url": "https://github.com/peterchavasse/arrow-line/issues"
   },
-  "homepage": "https://github.com/stanko-arbutina/arrow-line",
+  "homepage": "https://github.com/peterchavasse/arrow-line",
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-webpack-plugin": "^0.1.0",
