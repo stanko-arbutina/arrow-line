@@ -41,11 +41,7 @@ Rectangle.SIDES = {
 };
 
 function findAbsolutePosition(htmlElement) {
-  for (var x = 0, y = 0, el = htmlElement; el != null; el = el.offsetParent) {
-    x += el.offsetLeft;
-    y += el.offsetTop;
-  }
-
+  const {x, y} = htmlElement.getBoundingClientRect();
   return new Point(x,y);
 }
 
